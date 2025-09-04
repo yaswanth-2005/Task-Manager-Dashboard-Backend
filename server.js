@@ -27,6 +27,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/users", userRoutes);
 
+app.use(
+  cors({
+    origin: "https://task-manager-dashboard-rust.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 // MongoDB Connection
 const connectDB = async () => {
   try {
